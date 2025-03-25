@@ -24,7 +24,15 @@ def animated_input_box(prompt_text):
     print(Fore.CYAN + "╔" + "═" * box_width + "╗")
     print(Fore.CYAN + f"║  {prompt_text}  ║")
     print(Fore.CYAN + "╚" + "═" * box_width + "╝")
-    return input(Fore.GREEN + "➜ ")
+    user_input = input(Fore.GREEN + "➜ ")
+    
+    # Show Input in Stylish Box
+    input_width = len(user_input) + 6
+    print(Fore.YELLOW + "╔" + "═" * input_width + "╗")
+    print(Fore.YELLOW + f"║  {user_input}  ║")
+    print(Fore.YELLOW + "╚" + "═" * input_width + "╝\n")
+
+    return user_input
 
 # Stylish Comment Sent Box
 def comment_sent_box(comment_text):
