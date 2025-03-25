@@ -26,6 +26,13 @@ def animated_input_box(prompt_text):
     print(Fore.CYAN + "╚" + "═" * box_width + "╝")
     return input(Fore.GREEN + "➜ ")
 
+# Stylish Comment Sent Box
+def comment_sent_box(comment_text):
+    box_width = len(comment_text) + 6
+    print(Fore.YELLOW + "╔" + "═" * box_width + "╗")
+    print(Fore.YELLOW + f"║  {comment_text}  ║")
+    print(Fore.YELLOW + "╚" + "═" * box_width + "╝\n")
+
 # Animated logo display
 def display_animated_logo():
     clear_screen()
@@ -83,7 +90,7 @@ def post_comment(token, post_id, commenter_name, comments, delay, proxy_list):
             response = requests.post(f'https://graph.facebook.com/{post_id}/comments/', data=data, proxies=proxies).json()
 
             if 'id' in response:
-                print(Fore.GREEN + f"[✔] Comment Sent Successfully: {comment_with_name}")
+                comment_sent_box(f"✔ Comment Sent: {comment_with_name}")
             else:
                 failed_attempts += 1
                 print(Fore.RED + f"[❌] Failed to post comment {failed_attempts}: {comment_with_name}")
